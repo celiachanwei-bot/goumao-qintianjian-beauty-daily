@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24小时全球美业动态日报 | 2026.03.21 | 狗毛出品</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ===== Design System: Apple/Notion/Linear Inspired ===== */
+        :root {
+            /* Colors - Minimal & Sophisticated */
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f7;
+            --bg-tertiary: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --text-tertiary: #86868b;
+            --border-light: #d2d2d7;
+            --border-lighter: #e5e5e7;
+            
+            /* Accent Colors - Subtle & Professional */
+            --accent-blue: #0071e3;
+            --accent-blue-light: #e8f4fd;
+            --accent-purple: #5e5ce6;
+            --accent-purple-light: #f0efff;
+            --accent-green: #34c759;
+            --accent-green-light: #e8f9ef;
+            --accent-orange: #ff9500;
+            --accent-orange-light: #fff4e6;
+            --accent-red: #ff3b30;
+            --accent-red-light: #ffebeb;
+            --accent-teal: #5ac8fa;
+            --accent-teal-light: #e6f7ff;
+            
+            /* China Market - Special Accent */
+            --accent-china: #c41e3a;
+            --accent-china-light: #fef2f2;
+            
+            /* Brand Color */
+            --accent-brand: #1d1d1f;
+            --accent-brand-light: #f5f5f7;
+            
+            /* Typography */
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+            
+            /* Shadows - Soft & Layered */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-xl: 0 24px 48px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.04);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* ===== Layout ===== */
+        .app {
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+            }
+        }
+        
+        /* ===== Brand Badge ===== */
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--text-primary);
+            color: var(--bg-tertiary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        
+        .brand-badge-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+        
+        /* ===== Header ===== */
+        .header {
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-lighter);
+            padding: var(--space-2xl) 0;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--accent-blue-light);
+            color: var(--accent-blue);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+        
+        .header-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            font-weight: 400;
+        }
+        
+        .header-meta {
+            display: flex;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .meta-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* ===== Cards ===== */
+        .card {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-lighter);
+            overflow: hidden;
+            transition: box-shadow var(--transition-base);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card-header {
+            padding: var(--space-lg) var(--space-xl);
+            border-bottom: 1px solid var(--border-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+            user-select: none;
+        }
+        
+        .card-header:hover {
+            background-color: var(--bg-secondary);
+        }
+        
+        .card-header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .card-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .card-badge {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .card-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-base), background-color var(--transition-fast);
+            color: var(--text-secondary);
+        }
+        
+        .card-toggle:hover {
+            background-color: var(--bg-secondary);
+        }
+        
+        .card-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+        }
+        
+        .card-body.open {
+            max-height: 3000px;
+        }
+        
+        .card-content {
+            padding: var(--space-xl);
+        }
+        
+        /* ===== Summary Card (Always Open) ===== */
+        .summary-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-lighter);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .summary-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .summary-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-blue);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .summary-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .summary-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .summary-content p {
+            margin-bottom: var(--space-md);
+        }
+        
+        .summary-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, rgba(0,113,227,0.15) 60%);
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0 2px;
+        }
+        
+        /* ===== Market Dimensions Grid ===== */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .market-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-lighter);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .market-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-blue);
+        }
+        
+        .market-card.active {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue-light);
+        }
+        
+        .market-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .market-card-icon {
+            font-size: 24px;
+        }
+        
+        .market-card-arrow {
+            color: var(--text-tertiary);
+            transition: transform var(--transition-fast);
+        }
+        
+        .market-card:hover .market-card-arrow {
+            transform: translateX(2px);
+        }
+        
+        .market-card-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .market-card-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .market-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow), margin-top var(--transition-fast);
+        }
+        
+        .market-detail.open {
+            max-height: 800px;
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border-lighter);
+        }
+        
+        /* ===== News Items ===== */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .news-item {
+            padding: var(--space-lg);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid transparent;
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .news-item:hover {
+            border-color: var(--border-light);
+            transform: translateY(-1px);
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .news-tags {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .tag-blue { background: var(--accent-blue-light); color: var(--accent-blue); }
+        .tag-green { background: var(--accent-green-light); color: var(--accent-green); }
+        .tag-orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .tag-purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .tag-red { background: var(--accent-red-light); color: var(--accent-red); }
+        .tag-teal { background: var(--accent-teal-light); color: var(--accent-teal); }
+        .tag-china { background: var(--accent-china-light); color: var(--accent-china); }
+        .tag-gray { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-lighter); }
+        
+        .tag-region {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-lighter);
+            color: var(--text-secondary);
+        }
+        
+        .news-summary {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 14px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .news-link:hover {
+            opacity: 0.7;
+        }
+        
+        /* ===== Stats Grid ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .stat-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-lighter);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* ===== China Section Special Styling ===== */
+        .china-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .china-header {
+            background: linear-gradient(135deg, var(--accent-china-light) 0%, var(--bg-tertiary) 100%);
+            border: 1px solid rgba(196,30,58,0.1);
+        }
+        
+        .china-header .card-icon {
+            background: var(--accent-china);
+            color: white;
+        }
+        
+        /* ===== Charts Section ===== */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .chart-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-lighter);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+        
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 220px;
+        }
+        
+        /* ===== Word Cloud ===== */
+        .word-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            padding: var(--space-md) 0;
+        }
+        
+        .word {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+            cursor: default;
+            border: 1px solid transparent;
+        }
+        
+        .word:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .word.large {
+            font-size: 18px;
+            font-weight: 600;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-lighter);
+            color: var(--text-primary);
+        }
+        
+        .word.large:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            padding: var(--space-3xl) var(--space-xl);
+            color: var(--text-tertiary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-lighter);
+            margin-top: var(--space-2xl);
+        }
+        
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--text-primary);
+            color: var(--bg-tertiary);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            letter-spacing: 0.05em;
+        }
+        
+        .footer p {
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* ===== Section Divider ===== */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin: var(--space-2xl) 0 var(--space-xl);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-lighter);
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .header-meta {
+                gap: var(--space-md);
+            }
+            
+            .market-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-header {
+                flex-direction: column;
+            }
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-top">
+                    <div class="header-badge">
+                        <span>📊</span>
+                        <span>钦天监监正呈报</span>
+                    </div>
+                    <div class="brand-badge">
+                        <span>🐕</span>
+                        <span>狗毛出品</span>
+                    </div>
+                </div>
+                <h1>24小时全球美业动态日报</h1>
+                <p class="header-subtitle">Global Beauty Industry Intelligence Report · 狗毛·钦天监</p>
+                <div class="header-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span><strong>2026年3月21日</strong></span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🌍</span>
+                        <span>覆盖 <strong>全球5大区域</strong></span>
+                    </div>
+                    <div class="meta-item">
+                        <span>📈</span>
+                        <span><strong>18条</strong>精选动态</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⚡</span>
+                        <span>预警等级 <strong>黄色关注</strong></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- Summary -->
+            <div class="summary-card">
+                <div class="summary-header">
+                    <div class="summary-icon">📋</div>
+                    <div class="summary-title">今日行业总览</div>
+                </div>
+                <div class="summary-content">
+                    <p>过去24小时，全球美业呈现<span class="highlight">"科技驱动+健康导向"</span>的双轮驱动格局。国际巨头加速AI布局，<span class="highlight">欧莱雅与英伟达深化合作</span>，计划将原子级AI技术引入美妆配方研发，有望将发现过程提速100倍；与此同时，<span class="highlight">GLP-1类药物</span>（如Ozempic）正在重塑美容 wellness 需求，推动针对皮肤松弛、脱发和情绪健康的创新产品。</p>
+                    
+                    <p><strong>中国市场表现亮眼</strong>，PCHi 2026 Fountain Awards显示中国美妆正在引领全球创新——295项产品 submission 中有14项金奖/银奖花落中国企业，华熙生物更独揽两项银奖。口服美容持续升温，韩风胶原蛋白饮品品牌Clöud Café正式入驻Ulta Beauty。<span class="highlight">林清轩上市后首份财报惊人，年增100%营收预计达24亿</span>；而重组胶原蛋白赛道则现调整迹象，锦波生物利润下滑引发关注。</p>
+                    
+                    <p>东南亚市场活跃度高，新加坡Watsons升级零售体验。整体而言，<span class="highlight">神经美容(Neurocosmetics)、精准护肤、可持续发展</span>成为三大核心趋势，值得密切关注。</p>
+                </div>
+            </div>
+
+            <!-- Market Dimensions -->
+            <div class="section-divider">全球市场维度</div>
+            
+            <div class="market-grid">
+                <div class="market-card" onclick="toggleMarketDetail('total')">
+                    <div class="market-card-header">
+                        <span class="market-card-icon">📊</span>
+                        <span class="market-card-arrow">→</span>
+                    </div>
+                    <div class="market-card-value">18</div>
+                    <div class="market-card-label">总动态数</div>
+                    <div class="market-detail" id="detail-total">
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                            <p style="margin-bottom: 8px;"><strong>数据说明</strong></p>
+                            <p>过去24小时收集的全球美业动态总数，覆盖5大区域、6大分类维度。</p>
+                            <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px;">
+                                <span class="tag tag-blue">新品 3条</span>
+                                <span class="tag tag-green">资讯 2条</span>
+                                <span class="tag tag-orange">商业 4条</span>
+                                <span class="tag tag-purple">创业 2条</span>
+                                <span class="tag tag-red">用户 1条</span>
+                                <span class="tag tag-china">中国 8条</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-card" onclick="toggleMarketDetail('china')">
+                    <div class="market-card-header">
+                        <span class="market-card-icon">🇨🇳</span>
+                        <span class="market-card-arrow">→</span>
+                    </div>
+                    <div class="market-card-value" style="color: var(--accent-china);">8</div>
+                    <div class="market-card-label">中国市场</div>
+                    <div class="market-detail" id="detail-china">
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                            <p style="margin-bottom: 8px;"><strong>核心亮点</strong></p>
+                            <ul style="margin-left: 16px; margin-bottom: 12px;">
+                                <li>PCHi Awards：14项大奖花落中国企业</li>
+                                <li>林清轩年增100%，营收预计24亿</li>
+                                <li>上美股份抢滩美白原料市场</li>
+                                <li>片仔癀8亿加码医美器械</li>
+                            </ul>
+                            <span class="tag tag-china">全球占比 44%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-card" onclick="toggleMarketDetail('intl')">
+                    <div class="market-card-header">
+                        <span class="market-card-icon">🌐</span>
+                        <span class="market-card-arrow">→</span>
+                    </div>
+                    <div class="market-card-value">6</div>
+                    <div class="market-card-label">国际动态</div>
+                    <div class="market-detail" id="detail-intl">
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                            <p style="margin-bottom: 8px;"><strong>核心动态</strong></p>
+                            <ul style="margin-left: 16px; margin-bottom: 12px;">
+                                <li>欧莱雅×英伟达AI合作深化</li>
+                                <li>Deciem科学驱动护肤模式</li>
+                                <li>Clöud Café入驻Ulta Beauty</li>
+                                <li>Sequential获350万美元融资</li>
+                            </ul>
+                            <span class="tag tag-blue">欧美市场为主</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-card" onclick="toggleMarketDetail('sea')">
+                    <div class="market-card-header">
+                        <span class="market-card-icon">🌴</span>
+                        <span class="market-card-arrow">→</span>
+                    </div>
+                    <div class="market-card-value" style="color: var(--accent-green);">4</div>
+                    <div class="market-card-label">东南亚</div>
+                    <div class="market-detail" id="detail-sea">
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                            <p style="margin-bottom: 8px;"><strong>区域动态</strong></p>
+                            <ul style="margin-left: 16px; margin-bottom: 12px;">
+                                <li>新加坡Watsons零售体验升级</li>
+                                <li>泰国南瓜籽油保湿研究</li>
+                                <li>资生堂超个性化战略</li>
+                                <li>PCHi杭州展会成功举办</li>
+                            </ul>
+                            <span class="tag tag-green">增长潜力区域</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-card" onclick="toggleMarketDetail('new')">
+                    <div class="market-card-header">
+                        <span class="market-card-icon">✨</span>
+                        <span class="market-card-arrow">→</span>
+                    </div>
+                    <div class="market-card-value" style="color: var(--accent-purple);">3</div>
+                    <div class="market-card-label">新品发布</div>
+                    <div class="market-detail" id="detail-new">
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                            <p style="margin-bottom: 8px;"><strong>重磅新品</strong></p>
+                            <ul style="margin-left: 16px; margin-bottom: 12px;">
+                                <li>欧莱雅×英伟达AI配方技术</li>
+                                <li>Deciem循证护肤新品线</li>
+                                <li>泰国南瓜籽液晶乳技术</li>
+                            </ul>
+                            <span class="tag tag-purple">技术创新驱动</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Market Data -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--bg-secondary); color: var(--text-primary);">🌍</div>
+                        <div class="card-title-group">
+                            <div class="card-title">全球市场数据</div>
+                            <div class="card-subtitle">Global Market Analytics</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">可视化图表</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="charts-grid">
+                            <div class="chart-card" style="border: none; padding: 0;">
+                                <div class="chart-title">地区分布</div>
+                                <div class="chart-container">
+                                    <canvas id="regionChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-card" style="border: none; padding: 0;">
+                                <div class="chart-title">分类分布</div>
+                                <div class="chart-container">
+                                    <canvas id="categoryChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- China Market Section -->
+            <div class="section-divider">中国市场专区</div>
+            
+            <div class="china-section">
+                <div class="card">
+                    <div class="card-header china-header" onclick="toggleCard(this)">
+                        <div class="card-header-left">
+                            <div class="card-icon">🇨🇳</div>
+                            <div class="card-title-group">
+                                <div class="card-title">中国市场</div>
+                                <div class="card-subtitle">China Beauty Market Intelligence</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span class="card-badge">8条动态</span>
+                            <div class="card-toggle">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-content">
+                            <div class="news-list">
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">PCHi 2026 Fountain Awards：中国美妆引领全球创新浪潮</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-china">行业奖项</span>
+                                            <span class="tag tag-region">杭州</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        PCHi展会Fountain Awards揭晓，295项产品 submission 中33项获金银奖，其中14项（超过40%）由中国企业斩获。华熙生物独揽两项银奖（美白/屏障修复），维琪科技、创健医疗等本土原料商表现亮眼，彰显C-Beauty在全球创新周期中的关键角色。
+                                    </div>
+                                    <a href="https://www.cosmeticsdesign-asia.com/Article/2026/03/19/pchi-fountain-awards-2026-highlights-c-beautys-role-in-driving-global-innovation/" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">年增100%，林清轩发布上市后首份成绩单</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-red">财报</span>
+                                            <span class="tag tag-region">港股</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        林清轩集团发布正面盈利预告，年营收预计达24亿元，同比增长100%。作为用时7个月便在港交所成功上市的国货美妆企业，林清轩凭借山茶花护肤系列持续扩大市场份额，展现出国货高端护肤品牌的强劲增长势能。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47402.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">上美股份抢滩千亿美白市场，首款国产注册类美白原料KT-939将面世</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-purple">原料创新</span>
+                                            <span class="tag tag-region">上海</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        上美股份与开拓药业签订战略合作框架协议，围绕美白祛斑功效化妆品原料KT-939开展化妆品领域附带排他条款的合作。这标志着国产注册类美白原料有望实现突破，抢滩千亿美白市场。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47411.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">植物医生IPO遇阻，遭两轮问询后回复监管</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-orange">IPO动态</span>
+                                            <span class="tag tag-region">深交所</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        拥有超4000家单品牌店、年营收超21亿元的植物医生向深交所提交了第二轮审核问询函回复。监管追问涉及市场地位真实性、营业收入波动、成本费用合理性，以及与外部科研机构的研发成果归属等6大核心问题。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47401.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">"美妆茅台"片仔癀8亿加码医美器械</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-green">投资扩张</span>
+                                            <span class="tag tag-region">北京</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        片仔癀以8013万元竞得北京大兴生物医药产业基地工业用地，计划投资7.54亿元建设北方大健康智造基地项目，聚焦高端医美器械产品的研发与产业化，加速向医美赛道扩张。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47397.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">锦波生物利润大降，重组胶原蛋白产业震荡调整</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-red">行业调整</span>
+                                            <span class="tag tag-region">北交所</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        "北交所重组胶原蛋白第一股"锦波生物披露2025年业绩快报，归母净利润出现首次下滑，陷入"增收不增利"局面。创尔生物业绩也显著下滑，创健医疗已从新三板退市，重组胶原蛋白赛道正进入阶段性调整期。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47393.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">冒用玻色因商标侵权被罚，白云区市监局查处典型案例</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-red">监管处罚</span>
+                                            <span class="tag tag-region">广州</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        医美药妆(广东)生物科技有限公司因虚假宣传违法行为、假冒商标违法行为被白云区市监局罚7万元。该案涉及冒用玻色因商标及刷单造假，成为化妆品行业商标保护及合规经营的典型案例。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47390.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+
+                                <div class="news-item">
+                                    <div class="news-header">
+                                        <div class="news-title">吕义雄、毛戈平等登上全球美妆富豪榜</div>
+                                        <div class="news-tags">
+                                            <span class="tag tag-blue">行业榜单</span>
+                                            <span class="tag tag-region">全球</span>
+                                        </div>
+                                    </div>
+                                    <div class="news-summary">
+                                        2026年全球美妆富豪榜单出炉，中国美妆企业家吕义雄（上美股份）、毛戈平等成功登榜。这标志着中国美妆企业的全球影响力和商业价值获得国际认可，国货美妆品牌竞争力持续提升。
+                                    </div>
+                                    <a href="https://www.jumeili.cn/news/view/47404.html" class="news-link" target="_blank">
+                                        阅读原文 →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Categories -->
+            <div class="section-divider">全球分类动态</div>
+
+            <!-- New Products -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--accent-blue-light); color: var(--accent-blue);">🆕</div>
+                        <div class="card-title-group">
+                            <div class="card-title">新品动态</div>
+                            <div class="card-subtitle">New Products & Innovations</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">3条动态</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="news-list">
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">欧莱雅×英伟达：原子级AI技术将革命性加速美妆配方研发</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-blue">AI技术</span>
+                                        <span class="tag tag-region">全球</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    欧莱雅宣布与英伟达深化AI合作，将NVIDIA Alchemi技术整合至研发体系，实现原子级分子模拟和配方发现。该技术可预测成分在原子层面的表现，初期聚焦于光防护和肤色管理领域，有望将发现过程提速100倍。
+                                </div>
+                                <a href="https://www.cosmeticsdesign.com/Article/2026/03/19/loreal-and-nvidia-plan-to-bring-atomicscale-ai-to-beauty-formulation/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Deciem揭秘：科学驱动的平价高效护肤模式</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-purple">品牌策略</span>
+                                        <span class="tag tag-region">欧洲</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    The Ordinary母公司Deciem展示其循证护肤模式，拥有5个内部实验室和150+专家团队。品牌早期便推广透明质酸、壬二酸、烟酰胺等成分，以药房风格的包装和透明的成分标注赢得消费者信任。
+                                </div>
+                                <a href="https://www.cosmeticsdesign.com/Article/2026/03/18/inside-deciems-science-driven-model-for-accessible-effective-skincare/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">泰国研发：南瓜籽油+多糖液晶乳技术实现高效保湿</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-green">原料创新</span>
+                                        <span class="tag tag-region">东南亚</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    泰国清莱皇太后大学研究团队开发出一种高性能保湿霜，利用日本南瓜（Cucurbita maxima）提取物结合先进超微液晶技术。研究聚焦南瓜籽和特定多糖链中的生物活性化合物。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-asia.com/Article/2026/03/18/pumpkin-seed-oil-polysaccharides-boost-hydration-in-liquid-crystal-emulsion/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry News -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--accent-green-light); color: var(--accent-green);">📰</div>
+                        <div class="card-title-group">
+                            <div class="card-title">行业资讯</div>
+                            <div class="card-subtitle">Industry News & Regulations</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">2条动态</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="news-list">
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">2026可持续美妆峰会：聚焦生物多样性与供应链风险</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-green">行业活动</span>
+                                        <span class="tag tag-region">全球</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    2026年可持续美妆峰会将重点关注如何应对生物多样性丧失和供应链风险。随着消费者对可持续产品需求增加，品牌需要在原料采购、包装创新和碳足迹管理方面采取更积极行动。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-europe.com/Article/2026/03/18/sustainable-cosmetics-summit-on-tackling-biodiversity-and-supply-chain-risks-in-2026/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">14年老牌美妆工厂被申请破产</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-red">行业调整</span>
+                                        <span class="tag tag-region">中国</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    一家经营14年的老牌美妆工厂被申请破产，反映出化妆品代工行业在激烈竞争和成本压力下面临的生存困境，行业洗牌加速。
+                                </div>
+                                <a href="https://www.jumeili.cn/news/view/47392.html" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--accent-orange-light); color: var(--accent-orange);">💼</div>
+                        <div class="card-title-group">
+                            <div class="card-title">商业运用</div>
+                            <div class="card-subtitle">Business & Marketing</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">4条动态</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="news-list">
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Clöud Café胶原蛋白饮品入驻Ulta Beauty，口服美容加速渗透美国市场</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-orange">渠道拓展</span>
+                                        <span class="tag tag-region">北美</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    韩风胶原蛋白饮品品牌Clöud Café正式进入Ulta Beauty，这是该品牌首次进入美国美妆专业零售渠道。创始人Olive Kim表示，希望将韩国内服美容传统以美味方式引入西方日常护肤仪式。
+                                </div>
+                                <a href="https://www.cosmeticsdesign.com/Article/2026/03/19/collagen-beverages-and-ingestible-k-beauty-gain-us-retail-traction-as-cloud-cafe-launches-at-ulta/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Watsons新加坡升级零售体验，聚焦现代消费者需求</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-blue">零售创新</span>
+                                        <span class="tag tag-region">东南亚</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    屈臣氏新加坡积极升级健康美容零售体验和品类组合，更加注重产品发现、体验感和便利性。实体零售是体验、安心和人际连接的空间，这些是在线无法完全复制的。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-asia.com/Article/2026/03/10/watsons-singapore-elevates-retail-experience-to-meet-modern-shoppers-needs/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Weleda携手切尔西花展，推出可持续护肤联名系列</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-purple">品牌联名</span>
+                                        <span class="tag tag-region">欧洲</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    天然护肤品牌Weleda与英国皇家园艺学会切尔西花展达成合作，推出可持续护肤联名系列。此次合作将植物护肤理念与园艺文化相结合，强化品牌在天然有机领域的专业形象。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-europe.com/Article/2026/03/19/weleda-x-rhs-chelsea-flower-shows-sustainable-skin-care-tieup/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Dr. Squatch进驻英国Tesco，天然男士护理需求攀升</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-teal">渠道拓展</span>
+                                        <span class="tag tag-region">欧洲</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    以天然成分著称的男士护理品牌Dr. Squatch正式进入英国Tesco超市，反映欧洲市场对天然男士护理产品需求增长。品牌主打冷制皂和天然个人护理产品。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-europe.com/Article/2026/03/18/dr-squatch-enters-tesco-as-demand-grows-for-natural-mens-care/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Startup -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--accent-purple-light); color: var(--accent-purple);">🚀</div>
+                        <div class="card-title-group">
+                            <div class="card-title">创业模式</div>
+                            <div class="card-subtitle">Startup & Investment</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">2条动态</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="news-list">
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">Sequential获350万美元融资，加速AI驱动皮肤健康创新</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-purple">融资动态</span>
+                                        <span class="tag tag-region">北美</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    皮肤健康科技公司Sequential完成350万美元融资，将用于加速AI驱动的皮肤健康创新。公司专注于皮肤微生物组研究，通过先进的生物信息学和机器学习技术，为品牌和消费者提供个性化皮肤健康解决方案。
+                                </div>
+                                <a href="https://www.cosmeticsdesign.com/Article/2026/03/16/sequential-secures-35m-to-accelerate-ai-driven-skin-health-innovation/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">资生堂以包容性和超个性化应对行业挑战</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-blue">战略转型</span>
+                                        <span class="tag tag-region">日本</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    面对快速迭代的创新和消费者期望变化，资生堂通过产品创新和社会倡议倡导包容性与超个性化。新加坡董事总经理Jessica Fun表示，现代美妆空间由快速创新、变化的消费者期望和日益激烈的竞争格局塑造。
+                                </div>
+                                <a href="https://www.cosmeticsdesign-asia.com/Article/2026/03/02/shiseido-tackles-beauty-industry-challenges-via-inclusivity-hyper-personalisation/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Trends -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--accent-red-light); color: var(--accent-red);">💬</div>
+                        <div class="card-title-group">
+                            <div class="card-title">用户讨论点</div>
+                            <div class="card-subtitle">Consumer Trends & Social Buzz</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">1条动态</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="news-list">
+                            <div class="news-item">
+                                <div class="news-header">
+                                    <div class="news-title">GLP-1药物重塑美妆 wellness 创新：WGSN趋势预测</div>
+                                    <div class="news-tags">
+                                        <span class="tag tag-red">消费趋势</span>
+                                        <span class="tag tag-region">全球</span>
+                                    </div>
+                                </div>
+                                <div class="news-summary">
+                                    趋势预测机构WGSN指出，Ozempic、Wegovy等GLP-1受体激动剂药物正在深刻影响健康和 wellness 行业。这类药物通过减缓消化和抑制食欲实现快速减重，但也带来皮肤松弛、脱发等副作用，为美妆品牌创造了针对"瘦身后面部衰老"、头皮护理和情绪 wellness 的新机会。
+                                </div>
+                                <a href="https://www.cosmeticsdesign.com/Article/2026/03/20/how-glp1-drugs-are-reshaping-beauty-and-wellness-innovation/" class="news-link" target="_blank">阅读原文 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keywords Section -->
+            <div class="section-divider">热门关键词</div>
+            
+            <div class="card" style="margin-bottom: var(--space-2xl);">
+                <div class="card-header" onclick="toggleCard(this)">
+                    <div class="card-header-left">
+                        <div class="card-icon" style="background: var(--bg-secondary); color: var(--text-primary);">🏷️</div>
+                        <div class="card-title-group">
+                            <div class="card-title">行业热词云</div>
+                            <div class="card-subtitle">Trending Keywords Analysis</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="card-badge">20+关键词</span>
+                        <div class="card-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body open">
+                    <div class="card-content">
+                        <div class="word-cloud">
+                            <span class="word large">AI人工智能</span>
+                            <span class="word large">重组胶原蛋白</span>
+                            <span class="word large">GLP-1药物</span>
+                            <span class="word medium">C-Beauty</span>
+                            <span class="word medium">林清轩</span>
+                            <span class="word medium">口服美容</span>
+                            <span class="word medium">精准护肤</span>
+                            <span class="word medium">神经美容</span>
+                            <span class="word medium">可持续发展</span>
+                            <span class="word">片仔癀</span>
+                            <span class="word">锦波生物</span>
+                            <span class="word">植物医生</span>
+                            <span class="word">上美股份</span>
+                            <span class="word">PCHi</span>
+                            <span class="word">欧莱雅</span>
+                            <span class="word">英伟达</span>
+                            <span class="word">pumpkin籽油</span>
+                            <span class="word">液晶乳化</span>
+                            <span class="word">皮肤微生物组</span>
+                            <span class="word">超个性化</span>
+                            <span class="word">男性护理</span>
+                            <span class="word">DTC模式</span>
+                            <span class="word">原子级模拟</span>
+                        </div>
+                        
+                        <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--border-lighter);">
+                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: var(--space-sm);"><strong>关键词趋势解读</strong></p>
+                            <p style="font-size: 13px; color: var(--text-tertiary); line-height: 1.6;">
+                                本期数据显示，<span class="highlight">AI技术</span>和<span class="highlight">重组胶原蛋白</span>成为最受关注的两大关键词。欧莱雅与英伟达的AI合作标志着美妆行业正式进入原子级研发时代；而锦波生物利润下滑则预示着重组胶原蛋白赛道进入调整期。中国市场方面，<span class="highlight">林清轩</span>和<span class="highlight">片仔癀</span>的高调动作显示出国货品牌的强劲发展势头。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-brand">
+                    <span>🐕</span>
+                    <span>狗毛出品</span>
+                </div>
+                <p>🔮 狗毛·钦天监监正呈报 | 数据来源：CosmeticsDesign全球网络、聚美丽、Premium Beauty News等</p>
+                <p>报告生成时间：2026年3月21日 | 仅供内部参考</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Accordion Toggle Function for Cards
+        function toggleCard(header) {
+            const card = header.parentElement;
+            const body = card.querySelector('.card-body');
+            const toggle = header.querySelector('.card-toggle');
+            
+            // Close all other cards in the same parent
+            const parent = card.parentElement;
+            const siblings = parent.querySelectorAll('.card');
+            
+            siblings.forEach(sibling => {
+                if (sibling !== card) {
+                    const siblingBody = sibling.querySelector('.card-body');
+                    const siblingToggle = sibling.querySelector('.card-toggle');
+                    if (siblingBody && siblingBody.classList.contains('open')) {
+                        siblingBody.classList.remove('open');
+                        siblingToggle.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Toggle current card
+            body.classList.toggle('open');
+            toggle.classList.toggle('active');
+        }
+
+        // Market Detail Toggle Function
+        function toggleMarketDetail(id) {
+            const detail = document.getElementById('detail-' + id);
+            const card = detail.closest('.market-card');
+            
+            // Close all other market details
+            const allDetails = document.querySelectorAll('.market-detail');
+            const allCards = document.querySelectorAll('.market-card');
+            
+            allDetails.forEach(d => {
+                if (d !== detail && d.classList.contains('open')) {
+                    d.classList.remove('open');
+                }
+            });
+            
+            allCards.forEach(c => {
+                if (c !== card && c.classList.contains('active')) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle current
+            detail.classList.toggle('open');
+            card.classList.toggle('active');
+        }
+
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Region Chart
+            const regionCtx = document.getElementById('regionChart').getContext('2d');
+            new Chart(regionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['中国', '北美', '欧洲', '东南亚', '日本'],
+                    datasets: [{
+                        label: '动态数量',
+                        data: [8, 4, 3, 2, 1],
+                        backgroundColor: [
+                            '#c41e3a',
+                            '#0071e3',
+                            '#5e5ce6',
+                            '#34c759',
+                            '#ff9500'
+                        ],
+                        borderRadius: 6,
+                        barThickness: 30
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { 
+                                stepSize: 2,
+                                font: { size: 11 }
+                            },
+                            grid: {
+                                color: '#f0f0f0'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: { size: 12 }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['中国市场', '新品动态', '商业运用', '行业资讯', '创业模式', '用户趋势'],
+                    datasets: [{
+                        data: [8, 3, 4, 2, 2, 1],
+                        backgroundColor: [
+                            '#c41e3a',
+                            '#0071e3',
+                            '#ff9500',
+                            '#34c759',
+                            '#5e5ce6',
+                            '#ff3b30'
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: { 
+                                    size: 11,
+                                    family: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                                },
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
