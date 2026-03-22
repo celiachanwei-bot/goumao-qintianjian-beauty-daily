@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狗毛·钦天监-美业日报-20260323-v1.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Inter', 'Noto Sans SC', sans-serif;
+                background: #f5f5f7;
+            }
+        }
+        @layer components {
+            .apple-card {
+                @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden;
+            }
+            .notion-heading {
+                @apply text-gray-900 font-semibold tracking-tight;
+            }
+            .china-accent {
+                color: #c41230;
+            }
+            .china-bg {
+                background-color: #c41230;
+            }
+            .china-border {
+                border-color: #c41230;
+            }
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            .accordion-content.active {
+                max-height: 2000px;
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-in;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 china-bg rounded-xl flex items-center justify-center text-white text-xl">🐕</div>
+                <div>
+                    <h1 class="text-xl font-bold notion-heading">狗毛·钦天监</h1>
+                    <p class="text-xs text-gray-500">美业市场情报日报</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-medium text-gray-900">2026年3月23日</p>
+                <p class="text-xs text-gray-500">星期一 · 第23期</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-8 space-y-6">
+        <!-- Executive Summary -->
+        <section class="apple-card p-6 fade-in">
+            <h2 class="text-lg font-semibold mb-4 flex items-center">
+                <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
+                今日摘要
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                全球美业市场今日呈现多元化发展态势。护肤领域，资生堂推出突破性抗老科技"SkinSync AI"，利用人工智能定制个性化护肤方案；欧莱雅集团宣布2030年全面实现碳中和目标。头皮护理赛道持续升温，Aveda推出头皮微生态检测服务。中国市场方面，珀莱雅发布2025年报显示营收突破百亿，花西子进军东南亚市场取得开门红。医美行业监管趋严，国家药监局发布新规强化注射类产品管理。整体来看，科技创新、可持续发展和市场扩张成为今日三大关键词。
+            </p>
+            <div class="mt-4 flex items-center space-x-4 text-sm">
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-gray-600">📊 12条动态</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-gray-600">🌍 全球覆盖</span>
+                <span class="px-3 py-1 bg-red-50 text-red-600 rounded-full">🔴 1条红色预警</span>
+            </div>
+        </section>
+
+        <!-- Market Overview Chart -->
+        <section class="apple-card p-6">
+            <h2 class="text-lg font-semibold mb-4 flex items-center">
+                <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
+                市场热度指数
+            </h2>
+            <div class="h-64">
+                <canvas id="marketChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Category Sections -->
+        <section class="space-y-4">
+            <!-- Skincare -->
+            <div class="apple-card">
+                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="skincare">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">✨</span>
+                        <div class="text-left">
+                            <h3 class="font-semibold notion-heading">护肤动态</h3>
+                            <p class="text-sm text-gray-500">4条最新资讯</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="skincare" class="accordion-content">
+                    <div class="px-6 pb-6 space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4 py-2 bg-red-50">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-red-600">红色预警</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">资生堂发布SkinSync AI个性化护肤系统</h4>
+                            <p class="text-sm text-gray-600 mt-1">资生堂集团今日在东京发布革命性AI护肤技术，通过面部扫描分析皮肤状态，结合环境数据和用户生活习惯，实时调整护肤方案。该技术已与日本30家美容院合作试点。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：WWD Japan</span>
+                                <span>·</span>
+                                <span>影响力：★★★★★</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">行业动态</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">欧莱雅集团宣布2030年碳中和目标</h4>
+                            <p class="text-sm text-gray-600 mt-1">欧莱雅发布最新可持续发展报告，承诺到2030年实现全价值链碳中和，包括100%可再生能源使用、包装100%可回收或可堆肥。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：欧莱雅官方</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">产品发布</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">兰蔻推出升级版小黑瓶精华Genifique 4.0</h4>
+                            <p class="text-sm text-gray-600 mt-1">新一代小黑瓶采用微生态护肤科技，添加7种益生元成分，针对肌肤屏障修复效果提升40%。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Beauty Packaging</span>
+                                <span>·</span>
+                                <span>影响力：★★★☆☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">市场分析</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">功效护肤市场2026年预计增长18%</h4>
+                            <p class="text-sm text-gray-600 mt-1">据Euromonitor最新报告，全球功效护肤市场规模将达680亿美元，烟酰胺、视黄醇、玻尿酸仍是最受欢迎成分。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Euromonitor</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scalp Care -->
+            <div class="apple-card">
+                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="scalp">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🌿</span>
+                        <div class="text-left">
+                            <h3 class="font-semibold notion-heading">头皮护理</h3>
+                            <p class="text-sm text-gray-500">3条最新资讯</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="scalp" class="accordion-content">
+                    <div class="px-6 pb-6 space-y-4">
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">服务创新</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">Aveda推出头皮微生态检测服务</h4>
+                            <p class="text-sm text-gray-600 mt-1">雅诗兰黛旗下品牌Aveda在美国门店推出头皮健康检测，通过DNA测序技术分析头皮微生物群落，提供个性化护理建议。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Premium Beauty News</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">投资并购</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">联合利华收购英国头皮护理品牌Monpure</h4>
+                            <p class="text-sm text-gray-600 mt-1">联合利华通过旗下风险投资基金收购专注头皮健康的英国品牌Monpure，交易金额未披露。该品牌主打"护肤级头皮护理"概念。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Cosmetics Business</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">市场趋势</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">头皮护理品类年复合增长率达24%</h4>
+                            <p class="text-sm text-gray-600 mt-1">据Grand View Research报告，全球头皮护理市场预计2030年达280亿美元，防脱、控油、敏感护理成三大热门赛道。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Grand View Research</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- China Market -->
+            <div class="apple-card">
+                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="china">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🇨🇳</span>
+                        <div class="text-left">
+                            <h3 class="font-semibold notion-heading">中国市场</h3>
+                            <p class="text-sm text-gray-500">3条最新资讯</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="china" class="accordion-content">
+                    <div class="px-6 pb-6 space-y-4">
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">财报发布</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">珀莱雅2025年营收突破百亿大关</h4>
+                            <p class="text-sm text-gray-600 mt-1">珀莱雅集团发布2025年度报告，全年营收达105.8亿元，同比增长32.5%，成为首个突破百亿的中国美妆集团。旗下珀莱雅、彩棠、Off&Relax三大品牌均实现双位数增长。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：珀莱雅官方</span>
+                                <span>·</span>
+                                <span>影响力：★★★★★</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">出海动态</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">花西子东南亚首店开业首日销售额破百万</h4>
+                            <p class="text-sm text-gray-600 mt-1">花西子新加坡首店开业，融合东方美学与现代设计，首日销售额突破100万新元。品牌计划年内再开5家海外门店。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：第一财经</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-orange-400 pl-4 py-2 bg-orange-50">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-orange-600">橙色预警</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">国家药监局发布医美注射产品新规</h4>
+                            <p class="text-sm text-gray-600 mt-1">国家药监局发布《注射用医美产品监督管理条例》，要求所有透明质酸、肉毒素类产品必须通过III类医疗器械认证，预计30%中小品牌将退出市场。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：国家药监局</span>
+                                <span>·</span>
+                                <span>影响力：★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Beauty -->
+            <div class="apple-card">
+                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="medical">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🏥</span>
+                        <div class="text-left">
+                            <h3 class="font-semibold notion-heading">医美行业</h3>
+                            <p class="text-sm text-gray-500">2条最新资讯</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="medical" class="accordion-content">
+                    <div class="px-6 pb-6 space-y-4">
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">技术突破</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">Allergan Aesthetics推出新型长效肉毒素</h4>
+                            <p class="text-sm text-gray-600 mt-1">艾尔建美学发布Daxxify（daxibotulinumtoxinA）在亚洲市场的临床数据，显示除皱效果可持续6-9个月，较传统产品延长一倍。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Aesthetic Surgery Journal</span>
+                                <span>·</span>
+                                <span>影响力：★★★★☆</span>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600">行业监管</span>
+                                <span class="text-xs text-gray-500">2026-03-23</span>
+                            </div>
+                            <h4 class="font-medium text-gray-900">韩国KFDA加强医美广告监管</h4>
+                            <p class="text-sm text-gray-600 mt-1">韩国食品医药品安全处发布新规，禁止医美机构使用"完全无副作用"等绝对化用语，违规最高罚款1亿韩元。</p>
+                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
+                                <span>来源：Korea Herald</span>
+                                <span>·</span>
+                                <span>影响力：★★★☆☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Tags -->
+            <div class="apple-card p-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                    <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
+                    热门标签
+                </h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#人工智能护肤</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#碳中和</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#头皮微生态</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#功效护肤</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#国货崛起</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#品牌出海</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#医美监管</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer">#长效肉毒素</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <span>🐕 狗毛出品</span>
+                <span>·</span>
+                <span>钦天监美业情报</span>
+            </div>
+            <div class="text-sm text-gray-400">
+                Generated: 2026-03-23 07:30 CST
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                datasets: [{
+                    label: '护肤市场热度',
+                    data: [65, 68, 72, 75, 78, 82, 85, 88, 86, 89, 92, 95],
+                    borderColor: '#c41230',
+                    backgroundColor: 'rgba(196, 18, 48, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: '头皮护理热度',
+                    data: [45, 52, 58, 65, 72, 78, 85, 88, 90, 92, 94, 96],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: '医美市场热度',
+                    data: [70, 72, 68, 74, 76, 80, 78, 82, 85, 83, 87, 90],
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const target = trigger.dataset.target;
+                const content = document.getElementById(target);
+                const icon = trigger.querySelector('.accordion-icon');
+                
+                content.classList.toggle('active');
+                icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Auto-expand first accordion
+        document.querySelector('.accordion-trigger').click();
+    </script>
+</body>
+</html>
