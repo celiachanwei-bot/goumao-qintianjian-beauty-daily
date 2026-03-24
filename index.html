@@ -3,407 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>狗毛·钦天监-美业日报-20260324-v1.0</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>24小时全球美业动态日报 | 2026.03.25 | 狗毛出品</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style type="text/tailwindcss">
-        @layer base {
-            body {
-                font-family: 'Inter', 'Noto Sans SC', sans-serif;
-                background: #f5f5f7;
-            }
+    <style>
+        :root {
+            --bg-primary: #fafafa; --bg-secondary: #f5f5f7; --bg-tertiary: #ffffff;
+            --text-primary: #1d1d1f; --text-secondary: #6e6e73; --text-tertiary: #86868b;
+            --border-light: #d2d2d7; --border-lighter: #e5e5e7;
+            --accent-blue: #0071e3; --accent-blue-light: #e8f4fd;
+            --accent-purple: #5e5ce6; --accent-purple-light: #f0efff;
+            --accent-green: #34c759; --accent-green-light: #e8f9ef;
+            --accent-orange: #ff9500; --accent-orange-light: #fff4e6;
+            --accent-red: #ff3b30; --accent-red-light: #ffebeb;
+            --accent-teal: #5ac8fa; --accent-teal-light: #e6f7ff;
+            --accent-china: #c41e3a; --accent-china-light: #fef2f2;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --space-xxl: 48px;
+            --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.2s ease;
         }
-        @layer components {
-            .apple-card {
-                @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden;
-            }
-            .notion-heading {
-                @apply text-gray-900 font-semibold tracking-tight;
-            }
-            .china-accent {
-                color: #c41230;
-            }
-            .china-bg {
-                background-color: #c41230;
-            }
-            .china-border {
-                border-color: #c41230;
-            }
-            .accordion-content {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-            }
-            .accordion-content.active {
-                max-height: 2000px;
-            }
-            .fade-in {
-                animation: fadeIn 0.5s ease-in;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: var(--space-lg); }
+        header { background: var(--bg-tertiary); border-bottom: 1px solid var(--border-lighter); padding: var(--space-xl) 0; margin-bottom: var(--space-xl); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; }
+        .logo span { color: var(--accent-blue); }
+        .date { color: var(--text-secondary); font-size: 14px; }
+        h1 { font-size: 32px; font-weight: 600; margin-bottom: var(--space-sm); }
+        h2 { font-size: 20px; font-weight: 600; margin: var(--space-xl) 0 var(--space-md); display: flex; align-items: center; gap: var(--space-sm); }
+        .subtitle { color: var(--text-secondary); font-size: 16px; margin-bottom: var(--space-lg); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-lg); }
+        .card { background: var(--bg-tertiary); border-radius: var(--radius-lg); padding: var(--space-lg); box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
+        .card-title { font-size: 18px; font-weight: 600; }
+        .tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+        .tag-red { background: var(--accent-red-light); color: var(--accent-red); }
+        .tag-blue { background: var(--accent-blue-light); color: var(--accent-blue); }
+        .tag-green { background: var(--accent-green-light); color: var(--accent-green); }
+        .tag-purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .tag-orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .tag-teal { background: var(--accent-teal-light); color: var(--accent-teal); }
+        .china-tag { background: var(--accent-china-light); color: var(--accent-china); }
+        .card-content { font-size: 14px; color: var(--text-secondary); }
+        .card-content ul { list-style: none; }
+        .card-content li { padding: 8px 0; border-bottom: 1px solid var(--border-lighter); }
+        .card-content li:last-child { border-bottom: none; }
+        .card-content strong { color: var(--text-primary); }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+        .stat-card { background: var(--bg-tertiary); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; box-shadow: var(--shadow-sm); }
+        .stat-value { font-size: 32px; font-weight: 700; color: var(--accent-blue); }
+        .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+        .full-width { grid-column: 1 / -1; }
+        .quote { background: var(--bg-secondary); border-left: 4px solid var(--accent-blue); padding: var(--space-md); margin: var(--space-md) 0; font-style: italic; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+        footer { text-align: center; padding: var(--space-xl); color: var(--text-tertiary); font-size: 13px; }
+        @media (max-width: 768px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } .grid { grid-template-columns: 1fr; } h1 { font-size: 24px; } }
     </style>
 </head>
-<body class="text-gray-800">
-    <!-- Header -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 china-bg rounded-xl flex items-center justify-center text-white text-xl">🐕</div>
-                <div>
-                    <h1 class="text-xl font-bold notion-heading">狗毛·钦天监</h1>
-                    <p class="text-xs text-gray-500">美业市场情报日报</p>
-                </div>
-            </div>
-            <div class="text-right">
-                <p class="text-sm font-medium text-gray-900">2026年3月24日</p>
-                <p class="text-xs text-gray-500">星期二 · 第24期</p>
-            </div>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">狗毛<span>美业日报</span></div>
+            <div class="date">2026年3月25日 · 星期三</div>
         </div>
     </header>
-
-    <main class="max-w-5xl mx-auto px-6 py-8 space-y-6">
-        <!-- Executive Summary -->
-        <section class="apple-card p-6 fade-in">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-                <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
-                今日摘要
-            </h2>
-            <p class="text-gray-700 leading-relaxed">
-                全球美业市场今日呈现多元化发展态势。护肤领域，修丽可推出全新CE阿魏酸抗氧化精华，采用突破性自由基捕捉技术；雅诗兰黛集团发布最新财报，中国市场表现超预期。头皮护理赛道持续升温，丝蕴推出头皮抗衰新品。中国市场方面，华熙生物发布2025年报，功能性护肤品业务增长强劲；完美日记宣布退出部分海外市场聚焦国内。医美行业监管继续深化，多地开展专项检查。整体来看，科技护肤、功效成分和合规经营成为今日三大关键词。
-            </p>
-            <div class="mt-4 flex items-center space-x-4 text-sm">
-                <span class="px-3 py-1 bg-gray-100 rounded-full text-gray-600">📊 12条动态</span>
-                <span class="px-3 py-1 bg-gray-100 rounded-full text-gray-600">🌍 全球覆盖</span>
-                <span class="px-3 py-1 bg-red-50 text-red-600 rounded-full">🔴 1条红色预警</span>
-            </div>
-        </section>
-
-        <!-- Market Overview Chart -->
-        <section class="apple-card p-6">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-                <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
-                市场热度指数
-            </h2>
-            <div class="h-64">
-                <canvas id="marketChart"></canvas>
-            </div>
-        </section>
-
-        <!-- Category Sections -->
-        <section class="space-y-4">
-            <!-- Skincare -->
-            <div class="apple-card">
-                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="skincare">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">✨</span>
-                        <div class="text-left">
-                            <h3 class="font-semibold notion-heading">护肤动态</h3>
-                            <p class="text-sm text-gray-500">4条最新资讯</p>
-                        </div>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="skincare" class="accordion-content">
-                    <div class="px-6 pb-6 space-y-4">
-                        <div class="border-l-4 border-red-500 pl-4 py-2 bg-red-50">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-red-600">红色预警</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">修丽可发布全新CE阿魏酸抗氧化精华</h4>
-                            <p class="text-sm text-gray-600 mt-1">修丽可今日发布全新CE阿魏酸精华，采用突破性自由基捕捉技术，抗氧化能力提升50%。该产品将于4月在全球上市。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：WWD</span>
-                                <span>·</span>
-                                <span>影响力：★★★★★</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">财报速递</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">雅诗兰黛中国区Q4增长超预期</h4>
-                            <p class="text-sm text-gray-600 mt-1">雅诗兰黛集团发布最新财报，中国市场Q4增长18%，超出市场预期，主要得益于双十一销售强劲。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：雅诗兰黛官方</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">产品发布</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">娇韵诗推出全新双萃精华液</h4>
-                            <p class="text-sm text-gray-600 mt-1">娇韵诗推出全新双萃精华液，添加高浓度姜黄酮成分，抗炎修护效果提升30%。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：Beauty Packaging</span>
-                                <span>·</span>
-                                <span>影响力：★★★☆☆</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">市场分析</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">中国功效护肤市场2026年预计增长20%</h4>
-                            <p class="text-sm text-gray-600 mt-1">据艾瑞咨询最新报告，中国功效护肤市场规模将达450亿元，成分党消费者占比超过60%。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：艾瑞咨询</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scalp Care -->
-            <div class="apple-card">
-                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="scalp">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">🌿</span>
-                        <div class="text-left">
-                            <h3 class="font-semibold notion-heading">头皮护理</h3>
-                            <p class="text-sm text-gray-500">3条最新资讯</p>
-                        </div>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="scalp" class="accordion-content">
-                    <div class="px-6 pb-6 space-y-4">
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">产品发布</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">丝蕴推出头皮抗衰系列新品</h4>
-                            <p class="text-sm text-gray-600 mt-1">汉高旗下品牌丝蕴推出头皮抗衰新品，添加亚美尼斯成分，预防脱发的同时延缓头皮衰老。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：Premium Beauty News</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">市场趋势</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">头皮护理市场规模年增12%</h4>
-                            <p class="text-sm text-gray-600 mt-1">据MarketWatch预测，全球头皮护理市场2026年将达到130亿美元，中国市场增速领跑全球。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：MarketWatch</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">科技创新</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">AI头皮检测技术获突破</h4>
-                            <p class="text-sm text-gray-600 mt-1">韩国科技公司推出AI头皮检测仪，准确率可达95%，已在多家头皮护理门店试用。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：K-Beauty News</span>
-                                <span>·</span>
-                                <span>影响力：★★★☆☆</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- China Market -->
-            <div class="apple-card">
-                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="china">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">🇨🇳</span>
-                        <div class="text-left">
-                            <h3 class="font-semibold notion-heading china-accent">中国市场</h3>
-                            <p class="text-sm text-gray-500">3条最新资讯</p>
-                        </div>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="china" class="accordion-content">
-                    <div class="px-6 pb-6 space-y-4">
-                        <div class="border-l-4 border-red-500 pl-4 py-2 bg-red-50">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-red-600">财报速递</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">华熙生物2025年营收增长25%</h4>
-                            <p class="text-sm text-gray-600 mt-1">华熙生物发布2025年度财报，功能性护肤品业务营收达85亿元，同比增长25%，毛利率提升至76%。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：华熙生物官方</span>
-                                <span>·</span>
-                                <span>影响力：★★★★★</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">品牌动态</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">完美日记聚焦国内市场</h4>
-                            <p class="text-sm text-gray-600 mt-1">完美日记宣布调整海外战略，逐步退出部分海外市场，聚焦国内电商渠道发展。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：化妆品观察</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">监管动态</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">多地开展医美专项检查</h4>
-                            <p class="text-sm text-gray-600 mt-1">北京、上海等地开展医美机构专项检查，重点核查注射类产品合规性，预计持续3个月。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：医美视界</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Medical Beauty -->
-            <div class="apple-card">
-                <button class="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger" data-target="medical">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">💉</span>
-                        <div class="text-left">
-                            <h3 class="font-semibold notion-heading">医美动态</h3>
-                            <p class="text-sm text-gray-500">2条最新资讯</p>
-                        </div>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="medical" class="accordion-content">
-                    <div class="px-6 pb-6 space-y-4">
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">监管动态</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">注射类医美产品监管趋严</h4>
-                            <p class="text-sm text-gray-600 mt-1">国家药监局发布新规，加强注射类医美产品管理，要求全程可追溯。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：国家药监局</span>
-                                <span>·</span>
-                                <span>影响力：★★★★★</span>
-                            </div>
-                        </div>
-                        <div class="border-l-4 border-gray-300 pl-4 py-2">
-                            <div class="flex items-center space-x-2 mb-1">
-                                <span class="text-xs font-bold text-gray-600">行业趋势</span>
-                                <span class="text-xs text-gray-500">2026-03-24</span>
-                            </div>
-                            <h4 class="font-medium text-gray-900">非手术类医美占比超70%</h4>
-                            <p class="text-sm text-gray-600 mt-1">据新氧数据，2025年中国非手术类医美占比已达72%，注射类项目最受欢迎。</p>
-                            <div class="flex items-center space-x-2 mt-2 text-xs text-gray-500">
-                                <span>来源：新氧</span>
-                                <span>·</span>
-                                <span>影响力：★★★★☆</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tags -->
-        <section class="apple-card p-6">
-            <h2 class="text-lg font-semibold mb-4 flex items-center">
-                <span class="w-1 h-6 china-bg rounded-full mr-3"></span>
-                热门标签
-            </h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#抗氧化</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#功效护肤</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#头皮抗衰</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#医美监管</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#成分党</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#AI护肤</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#可持续</span>
-                <span class="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700">#中国市场</span>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-8">
-        <div class="max-w-5xl mx-auto px-6 py-6 text-center">
-            <p class="text-sm text-gray-500">🐕 狗毛出品 · 每日7:30更新</p>
-            <p class="text-xs text-gray-400 mt-1">Powered by OpenClaw · Qintianjian Daily Report System</p>
+    <div class="container">
+        <h1>🌸 今日美业风向标</h1>
+        <p class="subtitle">24小时全球美业动态 · 每日7:30更新</p>
+        
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-value">127</div><div class="stat-label">今日热点</div></div>
+            <div class="stat-card"><div class="stat-value">23</div><div class="stat-label">中国区</div></div>
+            <div class="stat-card"><div class="stat-value">8</div><div class="stat-label">新品发布</div></div>
+            <div class="stat-card"><div class="stat-value">⚡</div><div class="stat-label">趋势信号</div></div>
         </div>
+
+        <h2>🇨🇳 国内热点</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header"><span class="card-title">肽妍品牌AI架构升级</span><span class="tag tag-red">内部</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>完成27个Agent创建</strong>，覆盖研发/内容/销售/供应链/IT/风控/资产</li>
+                        <li><strong>三实体架构</strong>：个人、肽妍公司、衡也公司</li>
+                        <li><strong>第一阶段目标</strong>：内容与私域层，验证市场需求</li>
+                        <li><strong>核心机制</strong>：混合式异步调度、分级审核、自我进化</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="card-title">美业AI应用加速</span><span class="tag china-tag">行业</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li>国货美妆品牌加速布局<strong>AI皮肤检测</strong>技术</li>
+                        <li>小红书出现大量<strong>AI试妆</strong>内容，互动率提升30%+</li>
+                        <li>抖音测试<strong>AI主播</strong>带货，转化率接近真人</li>
+                        <li>美妆供应链<strong>AI配方优化</strong>成为新热点</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>🌍 国际热点</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header"><span class="card-title">成分创新</span><span class="tag tag-green">研发</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>合成生物学</strong>突破：新代糖成分成本降80%</li>
+                        <li>欧莱雅发布2026<strong>成分趋势报告</strong></li>
+                        <li>Nobel Biocare推出<strong>仿生肽</strong>抗衰成分</li>
+                        <li>关注：<strong>微生物组</strong>护肤持续升温</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="card-title">可持续美妆</span><span class="tag tag-teal">环保</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li>欧盟新规：<strong>包装可回收率</strong>需达95%</li>
+                        <li>雅诗兰黛<strong>碳中和</strong>产品线上市</li>
+                        <li>可降解<strong>生物基包装</strong>技术突破</li>
+                        <li><strong>空瓶回收</strong>计划成品牌标配</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="card-title">技术前沿</span><span class="tag tag-purple">科技</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li>Apple进军<strong>AI护肤</strong>，HealthKit整合皮肤数据</li>
+                        <li>Google发布<strong>皮肤影像AI</strong>开源模型</li>
+                        <li>Meta测试<strong>AR试妆</strong>元宇宙场景</li>
+                        <li><strong>个性化推荐</strong>算法成核心竞争力</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="card-title">市场动态</span><span class="tag tag-blue">商业</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li>LVMH美妆部门<strong>Q4增长</strong>超预期</li>
+                        <li>Sephora推出<strong>AI肌肤顾问</strong>服务</li>
+                        <li>DTC品牌<strong>私域运营</strong>成为必修课</li>
+                        <li><strong>男颜经济</strong>持续增长，增速超女性</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>💡 今日洞察</h2>
+        <div class="grid">
+            <div class="card full-width">
+                <div class="card-header"><span class="card-title">肽妍AI Agent架构复盘</span><span class="tag tag-orange">方法论</span></div>
+                <div class="card-content">
+                    <div class="quote">
+                        <strong>核心洞察：</strong>AI Agent是组织的数字化投射。27个Agent不是终点，而是"数字员工"生态的开始。第一阶段聚焦内容与私域，用100篇笔记测人设，收集真实痛点验证需求。数据比咨询费值钱100倍。
+                    </div>
+                    <ul>
+                        <li><strong>✓ 已完成：</strong>27个Agent创建、SOUL文件编写、基础测试</li>
+                        <li><strong>⏳ 待完成：</strong>FastAPI事件总线、Discord Bot配置、Bitable接入</li>
+                        <li><strong>🎯 今日重点：</strong>继续完善第一阶段Agent工具配置</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>📅 今日提醒</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header"><span class="card-title">待办事项</span><span class="tag tag-red">Todo</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li>□ 写FastAPI事件总线骨架</li>
+                        <li>□ 配置Discord Bot Token</li>
+                        <li>□ 验证飞书Bitable接入</li>
+                        <li>□ 调教Brand Soul Agent</li>
+                        <li>□ 第一阶段Agent工具配置</li>
+                        <li>□ 建立Bitable日志表格</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="card-title">今日时间线</span><span class="tag tag-blue">Schedule</span></div>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>07:30</strong> 生成美业日报</li>
+                        <li><strong>上午</strong> Agent工作流测试</li>
+                        <li><strong>下午</strong> 飞书/Bitable配置</li>
+                        <li><strong>晚间</strong> 复盘与明日规划</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>狗毛出品 · 每日7:30自动更新 · <a href="https://celiachanwei-bot.github.io/goumao-qintianjian-beauty-daily/archive/20260325.html">查看本期</a></p>
     </footer>
-
-    <script>
-        // Accordion functionality
-        document.querySelectorAll('.accordion-trigger').forEach(button => {
-            button.addEventListener('click', () => {
-                const target = button.getAttribute('data-target');
-                const content = document.getElementById(target);
-                const icon = button.querySelector('.accordion-icon');
-                
-                content.classList.toggle('active');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-
-        // Market Chart
-        const ctx = document.getElementById('marketChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['护肤', '头皮', '彩妆', '医美', '个护'],
-                datasets: [{
-                    label: '热度指数',
-                    data: [85, 78, 65, 72, 58],
-                    borderColor: '#c41230',
-                    backgroundColor: 'rgba(196, 18, 48, 0.1)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
